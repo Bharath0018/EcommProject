@@ -4,7 +4,7 @@
 <html>
 <head>
 
-<title>Insert title here</title>
+<title>Register Page</title>
 </head>
 <body>
 <h3 align="center">Register Page</h3>
