@@ -2,9 +2,11 @@ com\ecomm\dao\ProductDAOImpl.class
 com\ecomm\dao\SupplierDAOImpl.class
 com\ecomm\dao\CategoryDAOImpl.class
 com\ecomm\dao\ProductDAO.class
+com\ecomm\test\GeneralDBConfigTest.class
 com\ecomm\model\UserDetail.class
 com\ecomm\dao\UserDAOImpl.class
 com\ecomm\dao\UserDAO.class
+com\ecomm\GadgetsWorldBackend\App.class
 com\ecomm\model\Supplier.class
 com\ecomm\dao\SupplierDAO.class
 com\ecomm\model\Category.class

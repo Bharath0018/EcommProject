@@ -1,7 +1,7 @@
 <%@include file="Header.jsp"%>
 
 <form action="<c:url value="/updateCategory"/>" method="post">
-<table align="center">
+<table align="center" class="table table-bordered">
 	<tr>
 		<td colspan="2"><center>Category Detail</center></td>
 	</tr>

@@ -31,7 +31,7 @@ static SupplierDAO supplierDAO;
 	
 	
 	@Test
-	public void addCategoryTest()
+	public void addSupplierTest()
 	{
 		Supplier supplier= new Supplier();
 		supplier.setSupplierName("Om Enterprises");
@@ -42,7 +42,7 @@ static SupplierDAO supplierDAO;
 	
 	@Ignore
 	@Test
-	public void deleteCategoryTest()
+	public void deleteSupplierTest()
 	{
 		Supplier supplier=supplierDAO.getSupplier(33);
 		assertTrue("Problem in Category Deletion:",supplierDAO.deleteSupplier(supplier));
@@ -59,7 +59,7 @@ static SupplierDAO supplierDAO;
 	}
 	
 	@Test
-	public void listCategoriesTest()
+	public void listSuppliersTest()
 	{
 		List<Supplier> listSuppliers = supplierDAO.listSupplier();
 		assertTrue("Problem in Listing Categories:",listSuppliers.size()>0);

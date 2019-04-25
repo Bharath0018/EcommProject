@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html"%>
 <%@include file="Header.jsp" %>
+<%@include file="Carousel.jsp" %>
+
 <html>
 <head>
 

@@ -26,13 +26,13 @@ public class CategoryDAOTest
 		categoryDAO=(CategoryDAO)context.getBean("categoryDAO");
 	}
 	
-	@Ignore
+	
 	@Test
 	public void addCategoryTest()
 	{
 		Category category= new Category();
-		category.setCategoryName("Mobile Phones(Basic)");
-		category.setCategoryDesc("Samsung j-660 with built-in radio");
+		category.setCategoryName("Mobile");
+		category.setCategoryDesc("Smartphones");
 		
 		assertTrue("Problem in Category Insertion:",categoryDAO.addCategory(category));
 	}
@@ -55,6 +55,7 @@ public class CategoryDAOTest
 		assertTrue("Problem in Category Updation:",categoryDAO.updateCategory(category));
 	}
 	
+	@Ignore
 	@Test
 	public void listCategoriesTest()
 	{
