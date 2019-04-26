@@ -1,8 +1,10 @@
 <%@include file="Header.jsp" %>
 
+</div class="container">
+
 <form action="<c:url value="/addCategory"/>" method="post">
-<table align="center">
-	<tr>
+<table align="center" class="table table-bordered">
+	<tr class="info">
 		<td colspan="2"><center>Category Detail</center></td>
 	</tr>
 	<tr>
@@ -15,14 +17,17 @@
 	</tr>
 	<tr>
 		<td colspan="2">
-		<center><input type="submit" value="Add Category"/></center>
+		<center>
+		<input type="submit" value="Add Category" class="btn btn-success"/>
+		</center>
 		</td>
 	</tr>
 
 </table>
 </form>
-<table align="center">
-<tr>
+</div>
+<table align="center" class="table table-bordered">
+<tr bgcolor="orange">
 	<td colspan="4"><center>Category Detail</center></td>
 </tr>
 <tr>
@@ -37,8 +42,14 @@
 	<td>${category.categoryName}</td>
 	<td>${category.categoryDesc}</td>
 	<td>
-		<a href="<c:url value="/editCategory/${category.categoryId}"/>">EDIT</a> /
-		<a href="<c:url value="/deleteCategory/${category.categoryId}"/>">DELETE</a>
+		&nbsp;
+		<a href="<c:url value="/editCategory/${category.categoryId}"/>">
+		<img src="<c:url value="/resources/images/editIcon.jpg"/>" alt="Edit" width="15" height="15"/>
+		</a>
+		&nbsp;&nbsp;&nbsp;
+		<a href="<c:url value="/deleteCategory/${category.categoryId}"/>">
+		<img src="<c:url value="/resources/images/deleteIcon.jpg"/>" alt="Delete" width="15" height="15"/>
+		</a>
 	</td>
 </c:forEach>
 </table>

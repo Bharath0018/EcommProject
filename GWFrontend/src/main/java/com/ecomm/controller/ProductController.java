@@ -1,15 +1,24 @@
 package com.ecomm.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.ecomm.dao.CategoryDAO;
 import com.ecomm.dao.ProductDAO;
+import com.ecomm.model.Category;
 import com.ecomm.model.Product;
 
 @Controller
@@ -17,6 +26,9 @@ public class ProductController
 {
 	@Autowired
 	ProductDAO productDAO;
+	
+	@Autowired
+	CategoryDAO categoryDAO;
 	
 	@RequestMapping(value="/product")
 	public String showProductPage(Model m)
@@ -26,14 +38,55 @@ public class ProductController
 		
 		List<Product> listProducts=productDAO.listProducts();
 		m.addAttribute("productlist", listProducts);
+		List<Category> categoryList=categoryDAO.listCategory();
+		m.addAttribute("categoryList", this.getCategoryList(categoryList));
 		
 		return "Product";
 	}
 	
+	public LinkedHashMap<Integer,String> getCategoryList(List<Category> categoryList)
+	{
+		LinkedHashMap categoryList1=new LinkedHashMap();
+		int i=0;
+		while(i<categoryList.size())
+		{
+			Category category=categoryList.get(i);
+			categoryList1.put(category.getCategoryId(),category.getCategoryName());
+			i++;
+		}
+		return categoryList1;
+	}
+	
 	@RequestMapping(value="/InsertProduct",method=RequestMethod.POST)
-	public String insertProduct(@ModelAttribute("product")Product product1,Model m)
+	public String insertProduct(@ModelAttribute("product")Product product1,@RequestParam("pimage") MultipartFile fileImage,Model m)
 	{
 		productDAO.addProduct(product1);
+		
+		String path="D:\\EcommProject\\EcommProject-master\\GWFrontend\\src\\main\\webapp\\resources\\images\\";
+		
+		path=path+String.valueOf(product1.getProductId())+".jpg";
+		
+		File image=new File(path);
+		
+		if(!fileImage.isEmpty())
+		{
+			try
+			{
+				byte[] buffer=fileImage.getBytes();
+				FileOutputStream fos=new FileOutputStream(image);
+				BufferedOutputStream bs=new BufferedOutputStream(fos);
+				bs.write(buffer);
+				bs.close();
+			}
+			catch(Exception e)
+			{
+				m.addAttribute("ErrorInfo", e.getMessage());
+			}
+		}
+		else
+		{
+			m.addAttribute("ErrorInfo", "Problem Occured");
+		}
 		
 		Product product=new Product();
 		m.addAttribute("product", product);
@@ -41,7 +94,56 @@ public class ProductController
 		List<Product> listProducts=productDAO.listProducts();
 		m.addAttribute("productlist", listProducts);
 		
+		List<Category> categoryList=categoryDAO.listCategory();
+		m.addAttribute("categoryList", this.getCategoryList(categoryList));
+		
 		return "Product";
+	}
+	
+	@RequestMapping(value="/deleteProduct/{productId}")
+	public String deleteProduct(@PathVariable("productId")int productId, Model m)
+	{
+		Product product=productDAO.getProduct(productId);
+		
+		productDAO.deleteProduct(product);
+		
+		Product product1=new Product();
+		m.addAttribute("product", product1);
+		
+		List<Product> listProducts=productDAO.listProducts();
+		m.addAttribute("productlist", listProducts);
+		
+		List<Category> categoryList=categoryDAO.listCategory();
+		m.addAttribute("categoryList", this.getCategoryList(categoryList));
+		
+		return "Product";
+	}
+	
+	@RequestMapping(value="/UpdateProduct",method=RequestMethod.POST)
+	public String updateProduct(@ModelAttribute("product")Product product1,Model m)
+	{
+		productDAO.updateProduct(product1);
+		
+		Product product=new Product();
+		m.addAttribute("product", product);
+		
+		List<Product> listProducts=productDAO.listProducts();
+		m.addAttribute("productlist", listProducts);
+		
+		List<Category> categoryList=categoryDAO.listCategory();
+		m.addAttribute("categoryList", this.getCategoryList(categoryList));
+		
+		return "Product";
+	}
+	
+	@RequestMapping(value="/editProduct/{productId}")
+	public String editProduct(@PathVariable("productId")int productId, Model m)
+	{
+		Product product=productDAO.getProduct(productId);
+		
+		m.addAttribute("product", product);
+		
+		return "UpdateProduct";
 	}
 
 }

@@ -8,7 +8,8 @@
 <body>
 <a href="<c:url value='/login'/>">Login</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="<c:url value="/register"/>">Register</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-<a href="<c:url value="/category"/>">Category</a>
+<a href="<c:url value="/category"/>">Category</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+<a href="<c:url value="/product"/>">Product</a>
 
 
 </body>
