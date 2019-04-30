@@ -3,8 +3,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="container">
 
-	<form:form action="<c:url value="/InsertProduct"/>"
-		modelAttribute="product" method="post">
+	<c:url var="addAction" value="/InsertProduct"/>
+	<form:form action="${addAction}"
+		modelAttribute="product" enctype="multipart/form-data" method="post">
 		<table align="center" class="table table-bordered">
 			<tr class="info">
 				<td colspan="2"><center>Enter Product</center></td>
@@ -28,13 +29,17 @@
 			<tr>
 				<td>Category</td>
 				<td><form:select path="categoryId">
-						<form option value="0" label="--Select List" />
-						<form option items="${categoryList}" />
+						<form:option value="0" label="--Select List--"/>
+						<form:options items="${categoryList}"/>
 					</form:select></td>
 			</tr>
 			<tr>
 				<td>Supplier</td>
 				<td><form:input path="supplierId" /></td>
+			</tr>
+			<tr>
+				<td>Product Image</td>
+				<td><form:input type="file" path="pimage"/></td>
 			</tr>
 			<tr>
 				<td colspan="2">
@@ -60,6 +65,7 @@
 			<td>Price</td>
 			<td>Category</td>
 			<td>Supplier</td>
+			<td>Image</td>
 			<td>Operation</td>
 		</tr>
 
@@ -71,6 +77,7 @@
 				<td>${product.price}</td>
 				<td>${product.categoryId}</td>
 				<td>${product.supplierId}</td>
+				<td><img src="<c:url value="/resources/images/${product.productId}.jpg"/>" width="100" height="50"/></td>
 				<td>&nbsp; <a
 					href="<c:url value="/editProduct/${product.productId}"/>"> <img
 						src="<c:url value="/resources/images/editIcon.jpg"/>" alt="Edit"

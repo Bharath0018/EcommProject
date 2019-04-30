@@ -29,12 +29,12 @@ public class UserDAOTest
 	public void registerUserTest()
 	{
 		UserDetail user=new UserDetail();
-		user.setUsername("prashanth");
+		user.setUsername("bharath");
 		user.setPassword("pass123");
-		user.setEmailId("prashanth@gmail.com");
-		user.setMobileNo("7776665554");
-		user.setRole("ROLE_USER");
-		user.setAddress("Bangalore");
+		user.setEmailId("bharath@gmail.com");
+		user.setMobileNo("9164694490");
+		user.setRole("ROLE_ADMIN");
+		user.setAddress("Mysore");
 		
 		assertTrue("Problem in Registering User:",userDAO.registerUser(user));
 		

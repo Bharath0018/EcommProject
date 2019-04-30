@@ -3,7 +3,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="container">
 
-	<form:form action="<c:url value='/UpdateProduct'/>"
+	<c:url var="addAction" value="/UpdateProduct"/>
+	<form:form action="${addAction}" 
 		modelAttribute="product" method="post">
 		<table align="center" class="table table-bordered">
 			<tr class="info">
