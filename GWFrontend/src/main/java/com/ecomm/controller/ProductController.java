@@ -39,6 +39,7 @@ public class ProductController
 		List<Product> listProducts=productDAO.listProducts();
 		m.addAttribute("productlist", listProducts);
 		List<Category> categoryList=categoryDAO.listCategory();
+		m.addAttribute("categoryList", categoryList);
 		m.addAttribute("categoryList", this.getCategoryList(categoryList));
 		
 		return "Product";

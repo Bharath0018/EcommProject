@@ -3,6 +3,7 @@
 <%@include file="Header.jsp" %>
 <%@include file="Carousel.jsp" %>
 
+<div class="container">
 <form action="perform_login" method="post">
 <table class="table table-bordered responsive">
 	<tr class="success">
@@ -25,5 +26,6 @@
 	</tr>
 	</table>
 	</form>
+	</div>
 </body>
 </html>

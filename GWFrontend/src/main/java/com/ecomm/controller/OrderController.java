@@ -2,6 +2,8 @@ package com.ecomm.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,18 +31,22 @@ public class OrderController
 	UserDAO userDAO;
 	
 	@RequestMapping(value="/payment")
-	public String showPaymentPage(Model m)
+	public String showPaymentPage(Model m, HttpSession session)
 	{
-		String username="prashanth";
+		String username=(String)session.getAttribute("username");
+		
 		List<Cart> listCartItems=cartDAO.listCartItems(username);
 		m.addAttribute("grandTotal", this.getGrandTotal(listCartItems));
+		
+		session.setAttribute("cartSize", new Integer(listCartItems.size()));
+		
 		return "Payment";
 	}
 	
 	@RequestMapping(value="/receipt",method=RequestMethod.POST)
-	public String paymentProcess(@RequestParam("pmode") String pmode, Model m)
+	public String paymentProcess(@RequestParam("pmode") String pmode, Model m, HttpSession session)
 	{
-		String username="prashanth";
+		String username=(String)session.getAttribute("username");
 		
 		List<Cart> listCartItems=cartDAO.listCartItems(username);
 		int grandTotal=this.getGrandTotal(listCartItems);
@@ -59,6 +65,8 @@ public class OrderController
 		m.addAttribute("cartItemList", listCartItems);
 		m.addAttribute("orderDetail", orderDetail);
 		m.addAttribute("user", userDAO.getUserDetail(username));
+		
+		session.setAttribute("cartSize", 0);
 		
 		return "Receipt";
 	}

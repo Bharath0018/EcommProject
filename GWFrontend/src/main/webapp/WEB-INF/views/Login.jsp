@@ -1,8 +1,7 @@
-<%@ page language="java" contentType="text/html"%>
-
 <%@include file="Header.jsp" %>
 <%@include file="Carousel.jsp" %>
 
+<div class="container">
 <form action="perform_login" method="post">
 <table class="table table-bordered responsive">
 	<tr class="success">
@@ -14,16 +13,16 @@
 	</tr>
 	<tr>
 		<td colspan="2">Password</td>
-		<td colspan="2"><input type="password" name="passwd"/></td>
+		<td colspan="2"><input type="password" name="password"/></td>
 	</tr>
 	<tr>
-		<td colspan="4">
-			<center>
+	<td colspan="2"></td>
+		<td colspan="2" align="left">
+			
 			<input type="submit" value="Login" class="btn btn-success"/>
-			</center>
+			
 		</td>
 	</tr>
 	</table>
 	</form>
-</body>
-</html>
+	</div>

@@ -4,6 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ecomm.model.Product;
+import com.ecomm.model.UserDetail;
+
 @Controller
 public class PageController 
 {
@@ -18,6 +21,8 @@ public class PageController
 	public String showRegisterPage(Model m)
 	{
 		m.addAttribute("title", "Register Page");
+		UserDetail user=new UserDetail();
+		m.addAttribute("user", user);
 		return "Register";
 	}
 	
