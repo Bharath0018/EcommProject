@@ -31,6 +31,7 @@
 					<c:if test="${sessionScope.role=='ROLE_ADMIN'}">
 						<li><a href="<c:url value="/category"/>">Manage Category</a></li>
 						<li><a href="<c:url value="/product"/>">Manage Product</a></li>
+						<li><a href="<c:url value="/supplier"/>">Manage Supplier</a></li>
 					</c:if>
 					<c:if test="${sessionScope.role=='ROLE_USER'}">
 

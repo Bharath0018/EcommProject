@@ -1,8 +1,7 @@
-<%@include file="/WEB-INF/views/Header.jsp" %>
-<%@include file="/WEB-INF/views/Carousel.jsp" %>
 <html>
 <body>
+<%@include file="/WEB-INF/views/Header.jsp" %>
 
-<h2>Hello World!</h2>
+<h2>Welcome to GadgetWorld</h2>
 </body>
 </html>

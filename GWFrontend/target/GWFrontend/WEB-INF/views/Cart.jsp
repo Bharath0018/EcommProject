@@ -3,7 +3,7 @@
 <div class="container">
 <table class="table table-bordered responsive">
 	<tr class="success">
-		<td colspan="6"> Your Cart</td>
+		<td colspan="8"> Your Cart</td>
 	</tr>
 	<tr class="warning">
 		<th>SL#</th>
@@ -20,7 +20,7 @@
 		<td></td>
 		<td>${cart.productName}</td>
 		<td>${cart.price}</td>
-		<td><input type="text" name="quantity" value="${cart.quantity}"/></td>
+		<td><input type="number" max="99" min="1" name="quantity" value="${cart.quantity}"/></td>
 		<td><img src="<c:url value="/resources/images/${product.productId}.jpg"/>" width="50" height="50"/></td>
 		<td>${cart.price * cart.quantity}</td>
 		<td>

@@ -35,7 +35,10 @@
 			</tr>
 			<tr>
 				<td>Supplier</td>
-				<td><form:input path="supplierId" /></td>
+				<td><form:select path="supplierId">
+						<form:option value="0" label="--Select List--"/>
+						<form:options items="${supplierList}"/>
+					</form:select></td>
 			</tr>
 			<tr>
 				<td>Product Image</td>

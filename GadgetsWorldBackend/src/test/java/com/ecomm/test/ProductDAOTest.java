@@ -52,6 +52,7 @@ static ProductDAO productDAO;
 		
 	}
 	
+	
 	@Test
 	public void listProductTest()
 	{
@@ -66,6 +67,14 @@ static ProductDAO productDAO;
 			System.out.print(product.getStock()+":::");
 			System.out.println(product.getPrice());
 		}
+	}
+	
+	@Test
+	public void updateProductTest()
+	{
+		Product product=productDAO.getProduct(61);
+		product.setProductDesc("1TB HDD,8 GB RAM,FullHD Screen,Dolby Audio");
+		assertTrue("Problem in Product Updation:",productDAO.updateProduct(product));
 	}
 	
 	

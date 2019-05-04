@@ -11,6 +11,11 @@
 				<td colspan="2"><center>Enter Product</center></td>
 			</tr>
 			<tr>
+			<c:if test="${!empty product.productId}">
+				<td><form:input path="productId" disabled="true" readonly="true"/></td>
+			</c:if>
+			</tr>
+			<tr>
 				<td>Product Name</td>
 				<td><form:input path="productName" /></td>
 			</tr>

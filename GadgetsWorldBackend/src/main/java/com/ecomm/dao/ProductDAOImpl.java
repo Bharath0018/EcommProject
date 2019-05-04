@@ -64,9 +64,9 @@ public class ProductDAOImpl implements ProductDAO
 	@Override
 	public Product getProduct(int productId) 
 	{
-		Session session=sessionFactory.openSession();
+		Session session=sessionFactory.getCurrentSession();
 		Product product=session.get(Product.class,productId);
-		session.close();
+		/*session.close();*/
 		return product;
 
 	}

@@ -1,6 +1,7 @@
-com\ecomm\controller\ProductController.class
-com\ecomm\controller\CategoryController.class
-com\ecomm\controller\CartController.class
 com\ecomm\controller\PageController.class
 com\ecomm\controller\OrderController.class
 com\ecomm\controller\UserController.class
+com\ecomm\controller\ProductController.class
+com\ecomm\controller\SupplierController.class
+com\ecomm\controller\CategoryController.class
+com\ecomm\controller\CartController.class

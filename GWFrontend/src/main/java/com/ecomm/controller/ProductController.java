@@ -9,6 +9,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.SystemPropertyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,8 +19,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ecomm.dao.CategoryDAO;
 import com.ecomm.dao.ProductDAO;
+import com.ecomm.dao.SupplierDAO;
 import com.ecomm.model.Category;
 import com.ecomm.model.Product;
+import com.ecomm.model.Supplier;
 
 @Controller
 public class ProductController 
@@ -30,6 +33,9 @@ public class ProductController
 	@Autowired
 	CategoryDAO categoryDAO;
 	
+	@Autowired
+	SupplierDAO supplierDAO;
+	
 	@RequestMapping(value="/product")
 	public String showProductPage(Model m)
 	{
@@ -39,8 +45,11 @@ public class ProductController
 		List<Product> listProducts=productDAO.listProducts();
 		m.addAttribute("productlist", listProducts);
 		List<Category> categoryList=categoryDAO.listCategory();
-		m.addAttribute("categoryList", categoryList);
+		/*m.addAttribute("categoryList", categoryList);*/
 		m.addAttribute("categoryList", this.getCategoryList(categoryList));
+		List<Supplier> supplierList=supplierDAO.listSupplier();
+		/*m.addAttribute("supplierList", supplierList);*/
+		m.addAttribute("supplierList", this.getSupplierList(supplierList));
 		
 		return "Product";
 	}
@@ -56,6 +65,19 @@ public class ProductController
 			i++;
 		}
 		return categoryList1;
+	}
+	
+	public LinkedHashMap<Integer,String> getSupplierList(List<Supplier> supplierList)
+	{
+		LinkedHashMap supplierList1=new LinkedHashMap();
+		int i=0;
+		while(i<supplierList.size())
+		{
+			Supplier supplier=supplierList.get(i);
+			supplierList1.put(supplier.getSupplierId(),supplier.getSupplierName());
+			i++;
+		}
+		return supplierList1;
 	}
 	
 	@RequestMapping(value="/InsertProduct",method=RequestMethod.POST)
@@ -123,8 +145,9 @@ public class ProductController
 	@RequestMapping(value="/UpdateProduct",method=RequestMethod.POST)
 	public String updateProduct(@ModelAttribute("product")Product product1,Model m)
 	{
+		System.out.println("Im in update controller");
 		productDAO.updateProduct(product1);
-		
+		System.out.println("Im in update method");
 		Product product=new Product();
 		m.addAttribute("product", product);
 		
