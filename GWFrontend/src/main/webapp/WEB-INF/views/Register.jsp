@@ -4,37 +4,37 @@
 <div class="container">
 
 
-<h3 align="center">Register Page</h3>
+
 
 <c:url var="addAction" value="/AddUser"/>
 	<form:form action="${addAction}"
 		modelAttribute="user" method="post">
 		<table align="center" class="table table-bordered">
 			<tr class="info">
-				<td colspan="2"><center>SignUp Here</center></td>
+				<td colspan="6"><center>SignUp Here</center></td>
 			</tr>
 			<tr>
-				<td colspan="2">Username or Email Address</td>
-				<td colspan="2"><form:input path="username" /></td>
+				<td colspan="2">Username</td>
+				<td colspan="2"><form:input path="username" required="true"/></td>
 			</tr>
 			<tr>
 				<td colspan="2">Password</td>
-				<td colspan="2"><form:input path="password" /></td>
+				<td colspan="2"><form:input path="password" type="password" required="true" /></td>
 			</tr>
 			<tr>
-				<td colspan="2">Mobile No.</td>
-				<td colspan="2"><form:input path="mobileNo" /></td>
+				<td colspan="2">Mobile No.(10-digits)</td>
+				<td colspan="2"><form:input type="tel" path="mobileNo" required="true" pattern="[0-9]{10}"/></td>
 			</tr>
 			<tr>
 				<td colspan="2">Email Address</td>
-				<td colspan="2"><form:input path="emailId" /></td>
+				<td colspan="2"><form:input path="emailId" type="email" required="true"/></td>
 			</tr>
 			<tr>
 				<td colspan="2">Complete Shipment Address</td>
-				<td colspan="2"><form:input path="address" /></td>
+				<td colspan="2"><form:input path="address" required="true" /></td>
 			</tr>
 			<tr>
-				<td colspan="2">
+				<td colspan="6">
 					
 						<input type="submit" value="Submit" class="btn btn-success" />
 					

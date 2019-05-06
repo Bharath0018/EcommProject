@@ -142,8 +142,8 @@ public class ProductController
 		return "Product";
 	}
 	
-	@RequestMapping(value="/UpdateProduct",method=RequestMethod.POST)
-	public String updateProduct(@ModelAttribute("product")Product product1,Model m)
+	@RequestMapping(value="/UpdateProduct/{productId}" ,method=RequestMethod.POST )
+	public String updateProduct(@PathVariable("productId")int productId,@ModelAttribute("product")Product product1,Model m)
 	{
 		System.out.println("Im in update controller");
 		productDAO.updateProduct(product1);
@@ -154,10 +154,10 @@ public class ProductController
 		List<Product> listProducts=productDAO.listProducts();
 		m.addAttribute("productlist", listProducts);
 		
-		List<Category> categoryList=categoryDAO.listCategory();
+	/*	List<Category> categoryList=categoryDAO.listCategory();
 		m.addAttribute("categoryList", this.getCategoryList(categoryList));
-		
-		return "Product";
+		*/
+		return "AdminHome";
 	}
 	
 	@RequestMapping(value="/editProduct/{productId}")
@@ -167,11 +167,19 @@ public class ProductController
 		
 		m.addAttribute("product", product);
 		
+		List<Product> listProducts=productDAO.listProducts();
+		m.addAttribute("productlist", listProducts);
+		
 		List<Category> categoryList=categoryDAO.listCategory();
 		m.addAttribute("categoryList", this.getCategoryList(categoryList));
 		
+		List<Supplier> supplierList=supplierDAO.listSupplier();
+		m.addAttribute("supplierList", this.getSupplierList(supplierList));
+		
 		return "UpdateProduct";
 	}
+	
+	
 	
 	@RequestMapping(value="/totalProductDisplay/{productId}")
 	public String totalProductDisplay(@PathVariable("productId")int productId, Model m)

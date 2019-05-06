@@ -4,16 +4,18 @@
 
 
 <div class="row text-center text-lg-left">
+<div class="row">
 
-
-	<c:forEach items="${productlist}" var="product">
-	<div class="row">
+	<c:forEach items="${productlist}" var="product" >
+	
 		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+	
 		<c:if test="${product.stock > 0}">
 			<a href="<c:url value="/totalProductDisplay/${product.productId}"/>">
 		</c:if>
-			<img class="img-fluid img-thumbnail" src="<c:url value="/resources/images/${product.productId}.jpg"/>">
+				<div class="thumbnail" style="width:100%;height:30%"><img src="<c:url value="/resources/images/${product.productId}.jpg"/>"style="height: 105%;width: 95%"></div>
 			</a>
+			
 			<p>${product.productName}</p>
 			
 			<p>Price : INR ${product.price}/-</p>
@@ -26,9 +28,10 @@
 					   </c:if>
 			</p>					   
 		</div>
-	</div>
+	
 	</c:forEach>
 	
+</div>
 </div>
 </div>
 

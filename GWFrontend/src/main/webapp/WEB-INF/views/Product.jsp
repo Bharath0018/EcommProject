@@ -12,37 +12,37 @@
 			</tr>
 			<tr>
 				<td>Product Name</td>
-				<td><form:input path="productName" /></td>
+				<td><form:input path="productName" required="true"/></td>
 			</tr>
 			<tr>
 				<td>Product Description</td>
-				<td><form:input path="productDesc" /></td>
+				<td><form:input path="productDesc" required="true"/></td>
 			</tr>
 			<tr>
 				<td>Stock</td>
-				<td><form:input path="stock" /></td>
+				<td><form:input path="stock" required="true"/></td>
 			</tr>
 			<tr>
 				<td>Price</td>
-				<td><form:input path="price" /></td>
+				<td><form:input path="price" required="true"/></td>
 			</tr>
 			<tr>
 				<td>Category</td>
-				<td><form:select path="categoryId">
+				<td><form:select path="categoryId" >
 						<form:option value="0" label="--Select List--"/>
 						<form:options items="${categoryList}"/>
 					</form:select></td>
 			</tr>
 			<tr>
 				<td>Supplier</td>
-				<td><form:select path="supplierId">
+				<td><form:select path="supplierId" >
 						<form:option value="0" label="--Select List--"/>
 						<form:options items="${supplierList}"/>
 					</form:select></td>
 			</tr>
 			<tr>
 				<td>Product Image</td>
-				<td><form:input type="file" path="pimage"/></td>
+				<td><form:input type="file" path="pimage" required="true"/></td>
 			</tr>
 			<tr>
 				<td colspan="2">

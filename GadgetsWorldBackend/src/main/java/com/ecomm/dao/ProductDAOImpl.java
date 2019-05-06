@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ecomm.model.Category;
 import com.ecomm.model.Product;
 
 @Repository("productDAO")
@@ -64,9 +63,9 @@ public class ProductDAOImpl implements ProductDAO
 	@Override
 	public Product getProduct(int productId) 
 	{
-		Session session=sessionFactory.getCurrentSession();
+		Session session=sessionFactory.openSession();
 		Product product=session.get(Product.class,productId);
-		/*session.close();*/
+		//session.close();
 		return product;
 
 	}

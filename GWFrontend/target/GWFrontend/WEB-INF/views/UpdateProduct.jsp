@@ -11,6 +11,10 @@
 				<td colspan="2"><center>Enter Product</center></td>
 			</tr>
 			<tr>
+				<td>Product ID</td>
+				<td><form:input path="productId" disabled="true" readonly="true"/></td>
+			</tr>
+			<tr>
 				<td>Product Name</td>
 				<td><form:input path="productName" /></td>
 			</tr>
@@ -26,17 +30,14 @@
 				<td>Price</td>
 				<td><form:input path="price" /></td>
 			</tr>
-			<tr>
+			<%-- <tr>
 				<td>Category</td>
-				<td><form:select path="categoryId">
-						<form option value="0" label="--Select List" />
-						<form options items="${categoryList}">
-					</form:select></td>
+				<td><form:input path="categoryId" disabled="true" readonly="true"/></td>
 			</tr>
 			<tr>
 				<td>Supplier</td>
-				<td><form:input path="supplierId" /></td>
-			</tr>
+				<td><form:input path="supplierId" disabled="true" readonly="true"/></td>
+			</tr> --%>
 			<tr>
 				<td colspan="2">
 					<center>

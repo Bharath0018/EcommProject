@@ -1,5 +1,5 @@
 <%@include file="Header.jsp" %>
-<%@include file="Carousel.jsp" %>
+
 
 <div class="container">
 <form action="perform_login" method="post">
@@ -9,11 +9,11 @@
 	</tr>
 	<tr>
 		<td colspan="2">Username or Email Address</td>
-		<td colspan="2"><input type="text" name="username"/></td>
+		<td colspan="2"><input type="text" name="username" required/></td>
 	</tr>
 	<tr>
 		<td colspan="2">Password</td>
-		<td colspan="2"><input type="password" name="password"/></td>
+		<td colspan="2"><input type="password" name="password" required/></td>
 	</tr>
 	<tr>
 	<td colspan="2"></td>
