@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ecomm.dao.CategoryDAO;
 import com.ecomm.dao.ProductDAO;
@@ -84,6 +85,15 @@ public class UserController
 		}
 		
 		return page;
+	}
+	
+	@RequestMapping(value="/access_Denied")
+	public String accessDeniedPage(Model m)
+	{
+		
+		m.addAttribute("errorDescription", "Invalid Credentials");
+		
+		return "Error";
 	}
 	
 	@RequestMapping(value="/perform_logout")

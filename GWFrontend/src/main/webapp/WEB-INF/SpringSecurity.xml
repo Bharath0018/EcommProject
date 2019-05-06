@@ -22,7 +22,7 @@
 <security:form-login login-page="/login"
 	default-target-url="/" 
 	login-processing-url="/perform_login" 
-	authentication-failure-url="/login"
+	authentication-failure-url="/access_Denied"
 	authentication-success-forward-url="/login_success" />
 <security:logout logout-success-url="/login" logout-url="/perform_logout"/>
 <security:csrf disabled="true" />

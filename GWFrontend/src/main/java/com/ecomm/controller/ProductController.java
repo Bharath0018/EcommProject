@@ -120,7 +120,7 @@ public class ProductController
 		List<Category> categoryList=categoryDAO.listCategory();
 		m.addAttribute("categoryList", this.getCategoryList(categoryList));
 		
-		return "Product";
+		return "redirect:/productList";
 	}
 	
 	@RequestMapping(value="/deleteProduct/{productId}")
@@ -139,7 +139,7 @@ public class ProductController
 		List<Category> categoryList=categoryDAO.listCategory();
 		m.addAttribute("categoryList", this.getCategoryList(categoryList));
 		
-		return "Product";
+		return "redirect:/productList";
 	}
 	
 	@RequestMapping(value="/UpdateProduct/{productId}" ,method=RequestMethod.POST )
@@ -157,7 +157,7 @@ public class ProductController
 	/*	List<Category> categoryList=categoryDAO.listCategory();
 		m.addAttribute("categoryList", this.getCategoryList(categoryList));
 		*/
-		return "AdminHome";
+		return "productList";
 	}
 	
 	@RequestMapping(value="/editProduct/{productId}")
@@ -197,5 +197,17 @@ public class ProductController
 		
 		return "ProductDisplay";
 	}
+	
+	@RequestMapping(value="/productList")
+	public String showProductList(Model m)
+	{
+
+		List<Product> listProducts=productDAO.listProducts();
+		m.addAttribute("productlist", listProducts);
+		
+		m.addAttribute("title", "Product List");
+		return "ProductList";
+	}
+
 
 }
