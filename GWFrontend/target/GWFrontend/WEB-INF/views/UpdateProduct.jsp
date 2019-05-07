@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="container">
 
-	<c:url var="addAction" value="/UpdateProduct"/>
+	<c:url var="addAction" value="/UpdateProduct/${product.productId}"/>
 	<form:form action="${addAction}" 
 		modelAttribute="product" method="post">
 		<table align="center" class="table table-bordered">
@@ -30,14 +30,20 @@
 				<td>Price</td>
 				<td><form:input path="price" /></td>
 			</tr>
-			<%-- <tr>
+			<tr>
 				<td>Category</td>
-				<td><form:input path="categoryId" disabled="true" readonly="true"/></td>
+				<td><form:select path="categoryId" >
+						<form:option value="0" label="--Select List--"/>
+						<form:options items="${categoryList}"/>
+					</form:select></td></td>
 			</tr>
 			<tr>
 				<td>Supplier</td>
-				<td><form:input path="supplierId" disabled="true" readonly="true"/></td>
-			</tr> --%>
+				<td><form:select path="supplierId" >
+						<form:options value="0" label="--Select List--"/>
+						<form:options items="${supplierList}"/>
+					</form:select></td></td>
+			</tr>
 			<tr>
 				<td colspan="2">
 					<center>

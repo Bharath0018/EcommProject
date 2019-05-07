@@ -12,7 +12,7 @@
 					<div class="img-big-wrap">
 						<div>
 							<a href="#"><img
-								src="<c:url value="/resources/images/${product.productId}.jpg"/>"></a>
+								src="<c:url value="/resources/images/${product.productId}.jpg"/>"style="height: 95%;width: 95%"></a>
 						</div>
 					</div>
 				</article>

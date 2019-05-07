@@ -28,6 +28,12 @@ public class PageController
 		return "Register";
 	}
 	
+	@RequestMapping(value="/aboutUs")
+	public String showAboutUspage()
+	{
+		return "AboutUs";
+	}
+	
 	@RequestMapping(value="/")
 	public String showHomePage()
 	{

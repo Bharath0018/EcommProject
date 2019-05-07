@@ -9,7 +9,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-<link href="/resources/css/MyStyle.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -22,7 +22,7 @@
 				<c:if test="${!sessionScope.loggedIn}">
 					<li class="active"><a href="index.jsp">Home</a></li>
 
-					<li><a href="<c:url value="/aboutus"/>">AboutUs</a></li>
+					<li><a href="<c:url value="/aboutUs"/>">AboutUs</a></li>
 				</c:if>
 				<c:if test="${sessionScope.loggedIn}">
 					<c:if test="${sessionScope.role=='ROLE_ADMIN'}">
@@ -52,6 +52,7 @@
 							class="glyphicon glyphicon-user"></span>Sign Up</a></li>
 					<li><a href="<c:url value="/login"/>"><span
 							class="glyphicon glyphicon-log-in"></span>Login</a></li>
+							
 				</ul>
 			</c:if>
 

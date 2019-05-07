@@ -19,10 +19,15 @@
 	http://www.springframework.org/schema/security/spring-security.xsd">
 
 <security:http auto-config="true" use-expressions="true">
+<security:intercept-url pattern="/" access="permitAll" />
+        <security:intercept-url pattern="/home" access="permitAll" />
+        <security:intercept-url pattern="/product**" access="hasRole('ADMIN')" />
+        
+       
 <security:form-login login-page="/login"
 	default-target-url="/" 
 	login-processing-url="/perform_login" 
-	authentication-failure-url="/login"
+	authentication-failure-url="/access_Denied"
 	authentication-success-forward-url="/login_success" />
 <security:logout logout-success-url="/login" logout-url="/perform_logout"/>
 <security:csrf disabled="true" />

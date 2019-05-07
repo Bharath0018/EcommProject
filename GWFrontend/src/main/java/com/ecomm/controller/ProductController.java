@@ -157,7 +157,7 @@ public class ProductController
 	/*	List<Category> categoryList=categoryDAO.listCategory();
 		m.addAttribute("categoryList", this.getCategoryList(categoryList));
 		*/
-		return "productList";
+		return "redirect:/productList";
 	}
 	
 	@RequestMapping(value="/editProduct/{productId}")
